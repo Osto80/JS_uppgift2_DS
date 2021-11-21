@@ -94,6 +94,7 @@ function taskFive() {
   }
   
   document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
+  //Behåller knappen, men problemet är att den då fortsätter lägga till nya instancer av orden. Kanske kan bygga en guard mot det?
   //document.getElementById('answer-five').innerHTML = "<b>Skräp: </b>" + trash;
 }
 
@@ -128,6 +129,23 @@ const overThirty = [];
 const underThirty = [];
 
 function taskSix() {
+  for (let i = 0; i < persons.length; i++) {
+    if (persons[i].age > 30) {
+      overThirty.push(persons[i].name);
+    } else {
+      underThirty.push(persons[i].name);
+    }
+    if (persons[i].married == true) {
+      married.push(persons[i].name)
+    } else {
+      notMarried.push(persons[i].name)
+    } 
+  };
+  console.log(overThirty);
+  console.log(underThirty);
+  console.log(married);
+  console.log(notMarried);
+  //TODO: Sortering klar, ska fixa rendering på sida.
   alert("Replace this alert with a solution");
 }
 
