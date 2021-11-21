@@ -78,12 +78,15 @@ Det kommer alltså att se ut såhär
 Ätligt: banan, äpple, citron
 Skräp: apelsin, päron
 */
-
+//Done!
 const fruits = ["banan", "äpple", "citron", "apelsin", "päron"];
 const eatable = [];
 const trash = [];
 
 function taskFive() {
+
+  //eatable.splice(0,eatable.length);
+  //trash.splice(0,trash.length);
 
   for (let i = 0; i < fruits.length; i++) {
     if (fruits[i] == "apelsin" || fruits[i] == "päron") {
@@ -93,9 +96,9 @@ function taskFive() {
     }
   }
   
-  document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
+  //document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
   //Behåller knappen, men problemet är att den då fortsätter lägga till nya instancer av orden. Kanske kan bygga en guard mot det?
-  //document.getElementById('answer-five').innerHTML = "<b>Skräp: </b>" + trash;
+  document.getElementById('answer-five').innerHTML = "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash;
 }
 
 /*
@@ -115,7 +118,7 @@ Under 30: Diana,Carl,Karin
 Gift: Christian,Diana
 Ogift: Carl,Karin
 */
-
+//DONE!
 const persons = [
   { name: "Christian", age: 31, married: true },
   { name: "Diana", age: 29, married: true },
@@ -146,7 +149,7 @@ function taskSix() {
   console.log(married);
   console.log(notMarried);
   //TODO: Sortering klar, ska fixa rendering på sida.
-  alert("Replace this alert with a solution");
+  document.getElementById('answer-six').innerHTML = "<b>Över 30: </b>" + overThirty + "<b>Under 30: </b>" + underThirty + "<b>Gift </b>" + married + "<b>Ogift: </b>" + notMarried;  
 }
 
 /*
@@ -154,12 +157,21 @@ Uppgift 7:
 Dela upp strängen addMeSomeLineBreaks vid varje komma och skriv 
 ut texten på en ny rad i diven "answer-seven"
 */
-
+//DONE!
 const addMeSomeLineBreaks =
   "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
 
 function taskSeven() {
-  alert("Replace this alert with a solution");
+  document.getElementById('answer-seven').innerHTML = '';
+  const linesAdded = addMeSomeLineBreaks.split(",");
+  console.log(linesAdded);
+  for (let i = 0; i < linesAdded.length; i++) {
+  //Printar ut det tydligt att de är splittade vid komma-tecknen.
+  //document.getElementById('answer-seven').innerHTML = linesAdded; hade funkat för att printa ut den i diven.
+  document.getElementById('answer-seven').insertAdjacentHTML('beforeend', linesAdded[i] + '<br><br>');
+  
+  }
+  
 }
 
 /*
