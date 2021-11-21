@@ -49,6 +49,7 @@ function taskThree() {
     alert('FML');
   }
 }
+// Kanske kan skriva om med new date().getDay() jämförelse direkt. ska kolla detta.
 
 /*
 Uppgift 4: 
@@ -83,7 +84,17 @@ const eatable = [];
 const trash = [];
 
 function taskFive() {
-  alert("Replace this alert with a solution");
+
+  for (let i = 0; i < fruits.length; i++) {
+    if (fruits[i] == "apelsin" || fruits[i] == "päron") {
+      trash.push(fruits[i]);      
+    } else {
+      eatable.push(fruits[i]);
+    }
+  }
+  
+  document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
+  //document.getElementById('answer-five').innerHTML = "<b>Skräp: </b>" + trash;
 }
 
 /*
