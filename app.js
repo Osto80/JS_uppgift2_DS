@@ -59,12 +59,41 @@ ska sedan visas i en alert-box utefter följande: Produkten är: [RESULTATET], a
 eller båda värdena inte är ett nummer ska en alertbox med meddelandet "Jag kan bara multiplicera numer" triggas
 */
 
+const valueOne = "10.a";
+const valueTwo = 2;
+
 function multiplier(valueOne, valueTwo) {
-  alert("Replace this alert with a solution");
+  console.log(!Number.isNaN(valueOne));
+  
+  //Checkar om variabeln har ett nummervärde (oavsett typ), därefter kollar den typ av variabel, baserat på detta returnerar den felmeddelande om att det är fel typ, är det en sträng med numreriskt värde, utför den räkneoperationen med konvetering från sträng(string) till faktiskt nummer(number).
+  if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
+    if (Number.isNaN(valueOne) || Number.isNaN(valueTwo)) {
+      if (!Number(valueOne) > 0) {
+        const result = Number(valueOne) * Number(valueTwo);
+        alert('Produkten är: ' + result);
+        } else {
+        alert('Jag kan bara multiplicera nummer(Stringcheck)')
+        };      
+    } else {
+        alert('Jag kan bara multiplicera nummer')
+    }
+    /*if (!Number.isNaN(valueOne) || !Number.isNaN(valueTwo)) {
+      
+      console.log(Number(valueOne));      
+      const result = Number(valueOne) * Number(valueTwo);
+      alert('(NAN test)Produkten är: ' + result);      
+    } else { */
+    
+    //};
+  } else {
+    const result = Number(valueOne) * Number(valueTwo);
+    alert('Produkten är: ' + result);
+  };
 }
 
 function taskFour() {
-  multiplier();
+  console.log(Number.isNaN(valueOne));
+  multiplier(valueOne, valueTwo);
 }
 
 /*
@@ -179,9 +208,10 @@ Uppgift 8:
 Dölj diven med id card-eight i 3 sekunder efter att du klickat på knappenn,
 efter att tre sekunder har gått ska diven visas som vanligt igen
 */
-
+//Done!
 function taskEight() {
-  alert("Replace this alert with a solution");
+  document.getElementById('card-eight').style.display = 'none';
+  setTimeout(function() { document.getElementById('card-eight').style.display = 'block'}, 3000);  
 }
 
 /*
