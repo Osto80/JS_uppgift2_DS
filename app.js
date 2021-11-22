@@ -1,4 +1,34 @@
 /*
+//Lek med shadow, med target class. Svårt iom att vi inte får peta på HTML...
+let cardShadow = document.querySelectorAll('.card');
+console.log(cardShadow[1]);
+
+addEventListener('mouseover', function shadowDrop() {  
+  for (let i = 0; i < cardShadow.length; i++){
+    cardShadow[i].style.transitionDuration = "1500ms";
+    cardShadow[i].style.boxShadow = "2px 2px 5px grey";
+    this.setTimeout(function shadowTime() {      
+      cardShadow[i].style.boxShadow = "none";
+    }, 1500)
+  }
+})*/
+
+//Kul, men brutal i antalet anrop, så den kan vi inte använda... får fila vidare på detta.
+/*
+addEventListener('mouseover', function targetCard(event) {  
+  for (let i = 0; i < cardShadow.length; i++){    
+    event.target.style.boxShadow = "2px 2px 5px grey";
+    console.log('shadowtime');
+    this.setTimeout(function shadowTime() {      
+      event.target.style.boxShadow = "none";
+    }, 1500)
+  }
+})
+
+//cardShadow[1].style.boxShadow = "2px 2px 5px grey";
+*/
+
+/*
 Uppgift 1: 
 Använd variabeln blue för att "toggla" bakrgrundsfärgen mellan blå och vit
 för diven med id answer-one när man klickar på knappen
@@ -29,6 +59,7 @@ function taskTwo() {
   randomNumber = Math.floor(Math.random() * 1000);
   numbers.push(randomNumber);   
   document.getElementById('answer-two').innerHTML = numbers;
+  document.getElementById('answer-two').style.fontFamily = "arial";
 }
 
 /*
@@ -188,6 +219,7 @@ function taskSeven() {
   //Printar ut det tydligt att de är splittade vid komma-tecknen.
   //document.getElementById('answer-seven').innerHTML = linesAdded; hade funkat för att printa ut den i diven.
   document.getElementById('answer-seven').insertAdjacentHTML('beforeend', linesAdded[i] + '<br><br>');
+  document.getElementById('answer-seven').style.fontSize = "75%";
   
   }
   
