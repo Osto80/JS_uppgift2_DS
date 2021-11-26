@@ -57,7 +57,7 @@ const numbers = [234, 986, 784];
 function taskTwo() {  
   randomNumber = Math.floor(Math.random() * 1000);
   numbers.push(randomNumber);   
-  document.getElementById('answer-two').innerHTML = numbers;
+  document.getElementById('answer-two').innerHTML = numbers.join('<br>');
   document.getElementById('answer-two').style.fontFamily = "arial";
 }
 
@@ -88,14 +88,14 @@ eller båda värdena inte är ett nummer ska en alertbox med meddelandet "Jag ka
 */
 //Undefined returnerar 'Produkten är: NAN'.
 //Null använder logiskt värdet 0;
-const valueOne = 2;
-const valueTwo = "3.5";
+const keyValOne = 2;
+const keyValTwo = "3.5";
 
-function multiplier(valueOne, valueTwo) {  
-  if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
-    if (!Number.isNaN(valueOne) || !Number.isNaN(valueTwo)) {
-      if (Number(valueOne) > 0 && Number(valueTwo) > 0 ) {
-        const result = Number(valueOne) * Number(valueTwo);
+function multiplier(keyValOne, keyValTwo) {  
+  if (typeof keyValOne == 'string' || typeof keyValTwo == 'string') {    
+    if (!Number.isNaN(keyValOne) || !Number.isNaN(keyValTwo)) {
+      if (Number(keyValOne) > 0 && Number(keyValTwo) > 0 ) {
+        const result = Number(keyValOne) * Number(keyValTwo);
           alert('Produkten är: ' + result);
         } else {
           alert('Jag kan bara multiplicera nummer (String)')
@@ -104,14 +104,14 @@ function multiplier(valueOne, valueTwo) {
         alert('Jag kan bara multiplicera nummer')
     }    
   } else {
-    const result = Number(valueOne) * Number(valueTwo);
+    const result = Number(keyValOne) * Number(keyValTwo);
     alert('Produkten är: ' + result);
   };
 }
 
 function taskFour() {
-  //console.log(Number.isNaN(valueOne));
-  multiplier(valueOne, valueTwo);
+  //console.log(Number.isNaN(keyueOne));
+  multiplier(keyValOne, keyValTwo);
 }
 
 /*
@@ -130,22 +130,17 @@ const fruits = ["banan", "äpple", "citron", "apelsin", "päron"];
 const eatable = [];
 const trash = [];
 
-function taskFive() {
-
-  //eatable.splice(0,eatable.length);
-  //trash.splice(0,trash.length);
-
-  for (let i = 0; i < fruits.length; i++) {
-    if (fruits[i] == "apelsin" || fruits[i] == "päron") {
-      trash.push(fruits[i]);      
+function taskFive() {  
+  for (fruit of fruits) {
+    if (fruit == "apelsin" || fruit == "päron") {
+      trash.push(fruit);      
     } else {
-      eatable.push(fruits[i]);
+      eatable.push(fruit);
     }
-  }
-  
-  //Behåller knappen, men problemet är att den då fortsätter lägga till nya instancer av orden. Kanske kan bygga en guard mot det?
-  //document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
-  document.getElementById('answer-five').innerHTML = "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash;
+  }   
+  document.getElementById('answer-five').innerHTML = 
+    `<span><b>Ätligt:</b> ${eatable}</span>
+    <span><b>Skräp:</b> ${trash}</span>`;
 }
 
 /*
@@ -179,19 +174,23 @@ const overThirty = [];
 const underThirty = [];
 
 function taskSix() {
-  for (let i = 0; i < persons.length; i++) {
-    if (persons[i].age > 30) {
-      overThirty.push(persons[i].name);
+  for (let key in persons) {
+    if (persons[key].age > 30) {
+      overThirty.push(persons[key].name);
     } else {
-      underThirty.push(persons[i].name);
+      underThirty.push(persons[key].name);
     }
-    if (persons[i].married == true) {
-      married.push(persons[i].name)
+    if (persons[key].married == true) {
+      married.push(persons[key].name)
     } else {
-      notMarried.push(persons[i].name)
+      notMarried.push(persons[key].name)
     } 
   };  
-  document.getElementById('answer-six').innerHTML = "<b>Över 30: </b>" + overThirty + "<b>Under 30: </b>" + underThirty + "<b>Gift </b>" + married + "<b>Ogift: </b>" + notMarried;  
+  document.getElementById('answer-six').innerHTML = 
+    `<span><b>Över 30: </b> ${overThirty}</span>
+    <span><b>Under 30: </b> ${underThirty.join(', ')}</span>
+    <span><b>Gift </b> ${married.join(', ')}</span>
+    <span><b>Ogift: </b> ${notMarried.join(', ')}</span>`;  
 }
 
 /*
@@ -214,7 +213,7 @@ function taskSeven() {
     }
   }
   document.getElementById('answer-seven').innerHTML = linesAdded;
-  document.getElementById('answer-seven').style.fontSize = "65%";
+  document.getElementById('answer-seven').style.fontSize = '65%';
   /*
   //FIRST Version.
   //Rensar bort knappen från elementet
@@ -233,10 +232,15 @@ Uppgift 8:
 Dölj diven med id card-eight i 3 sekunder efter att du klickat på knappenn,
 efter att tre sekunder har gått ska diven visas som vanligt igen
 */
-//Done!
+//Done! 
 function taskEight() {
-  document.getElementById('card-eight').style.display = 'none';
-  setTimeout(function() { document.getElementById('card-eight').style.display = 'block'}, 3000);  
+  const card = document.getElementById('card-eight');
+  card.style.transform = 'Scale(50%)';
+  card.style.transitionDuration = '150ms';
+  setTimeout(function() {card.style.display = 'none'}, 140);    
+  setTimeout(function() {card.style.display = 'block', 
+  card.style.transform = 'Scale(100%)' }, 3000);
+   
 }
 
 /*
@@ -274,7 +278,7 @@ och att argument nummer tre antingen är satt till "add", "subtract", "multiply"
 om någon av dessa conditions inte uppfylls ska du visa en alertbox med texten "Något är fel"
 */
 
-function calculator(valueOne, valueTwo, operator) {
+function calculator(keyueOne, keyueTwo, operator) {
   alert("Replace this alert with a solution");
 }
 
