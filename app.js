@@ -37,13 +37,20 @@ let blue = false;
 
 function taskOne() {
   let element = document.getElementById('answer-one');  
+  blue == false ? (blue = true, element.style.backgroundColor = 'blue'
+  ) : (
+    blue = false, element.style.backgroundColor = 'white'
+  );
+  //Old version. 
+  /*
   if (blue == false) {
     blue = true;
     element.style.backgroundColor = 'blue';
   } else {
     blue = false;
     element.style.backgroundColor = 'white';
-  } 
+  }  
+  */
 }
 
 /*
@@ -175,6 +182,19 @@ const underThirty = [];
 
 function taskSix() {
   for (let key in persons) {
+    persons[key].age > 30 ? 
+    (overThirty.push(persons[key].name)):(underThirty.push(persons[key].name)), 
+    persons[key].married == true ? 
+    (married.push(persons[key].name)):(notMarried.push(persons[key].name));
+  };
+  document.getElementById('answer-six').innerHTML = 
+    `<span><b>Över 30: </b> ${overThirty}</span>
+    <span><b>Under 30: </b> ${underThirty.join(', ')}</span>
+    <span><b>Gift </b> ${married.join(', ')}</span>
+    <span><b>Ogift: </b> ${notMarried.join(', ')}</span>`;
+/*
+// Old version.
+  for (let key in persons) {
     if (persons[key].age > 30) {
       overThirty.push(persons[key].name);
     } else {
@@ -185,12 +205,8 @@ function taskSix() {
     } else {
       notMarried.push(persons[key].name)
     } 
-  };  
-  document.getElementById('answer-six').innerHTML = 
-    `<span><b>Över 30: </b> ${overThirty}</span>
-    <span><b>Under 30: </b> ${underThirty.join(', ')}</span>
-    <span><b>Gift </b> ${married.join(', ')}</span>
-    <span><b>Ogift: </b> ${notMarried.join(', ')}</span>`;  
+  };
+*/    
 }
 
 /*
@@ -237,10 +253,8 @@ function taskEight() {
   const card = document.getElementById('card-eight');
   card.style.transform = 'Scale(50%)';
   card.style.transitionDuration = '150ms';
-  setTimeout(function() {card.style.display = 'none'}, 140);    
-  setTimeout(function() {card.style.display = 'block', 
-  card.style.transform = 'Scale(100%)' }, 3000);
-   
+  setTimeout(() => {card.style.display = 'none'}, 140);  
+  setTimeout(() => {card.style.display = 'block', card.style.transform = 'Scale(100%)'}, 3140);   
 }
 
 /*
@@ -251,9 +265,16 @@ answer-container till blå, annars ska den ändras till röd
 
 //DONE!
 function taskNine() {
-  let element = document.getElementsByClassName('answer-container');  
+  
+  let element = document.getElementsByClassName('answer-container');
+  for (let card in element) {
+    new Date().getHours() <= 16 ? (element[card].style.backgroundColor = 'red') :
+    (element[card].style.backgroundColor = 'blue');
+    };
+
   //const time = new Date().getHours();
-  //let hours = time.getHours();  
+  //let hours = time.getHours();
+  /*  
   if (new Date().getHours() <= 16) {        
     for (i = 0; i < element.length; i++) {
       element[i].style.backgroundColor = 'red';
@@ -262,7 +283,9 @@ function taskNine() {
     for (i = 0; i < element.length; i++) {
       element[i].style.backgroundColor = 'blue';
     }
-  }  
+  }
+  */
+  
 }
 
 /*
