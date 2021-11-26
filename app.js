@@ -37,10 +37,10 @@ let blue = false;
 
 function taskOne() {
   let element = document.getElementById('answer-one');  
-  blue == false ? (blue = true, element.style.backgroundColor = 'blue'
-  ) : (
-    blue = false, element.style.backgroundColor = 'white'
-  );
+  blue == false ? ( blue = true, 
+    element.style.backgroundColor = 'blue') :
+    ( blue = false, 
+    element.style.backgroundColor = 'white');
   //Old version. 
   /*
   if (blue == false) {
@@ -76,14 +76,13 @@ inte är helg ska du trigga en alert med meddelandet "FML"
 */
 //DONE!
 function taskThree() {
-  let whatDay = new Date().getDay();  
-  //console.log(whatDay);
+  let whatDay = new Date().getDay();
   if (whatDay == 0 || whatDay == 6) {
     alert("Woohooo it's weekend");
   } else {
     alert('FML');
   }
-}
+};
 // Kanske kan skriva om med new date().getDay() jämförelse direkt. ska kolla detta.
 
 /*
@@ -95,14 +94,14 @@ eller båda värdena inte är ett nummer ska en alertbox med meddelandet "Jag ka
 */
 //Undefined returnerar 'Produkten är: NAN'.
 //Null använder logiskt värdet 0;
-const keyValOne = 2;
-const keyValTwo = "3.5";
+const valueOne = 2;
+const valueTwo = "3.5";
 
-function multiplier(keyValOne, keyValTwo) {  
-  if (typeof keyValOne == 'string' || typeof keyValTwo == 'string') {    
-    if (!Number.isNaN(keyValOne) || !Number.isNaN(keyValTwo)) {
-      if (Number(keyValOne) > 0 && Number(keyValTwo) > 0 ) {
-        const result = Number(keyValOne) * Number(keyValTwo);
+function multiplier(valueOne, valueTwo) {  
+  if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
+    if (!Number.isNaN(valueOne) || !Number.isNaN(valueTwo)) {
+      if (Number(valueOne) > 0 && Number(valueTwo) > 0 ) {
+        const result = Number(valueOne) * Number(valueTwo);
           alert('Produkten är: ' + result);
         } else {
           alert('Jag kan bara multiplicera nummer (String)')
@@ -111,14 +110,13 @@ function multiplier(keyValOne, keyValTwo) {
         alert('Jag kan bara multiplicera nummer')
     }    
   } else {
-    const result = Number(keyValOne) * Number(keyValTwo);
+    const result = Number(valueOne) * Number(valueTwo);
     alert('Produkten är: ' + result);
   };
 }
 
-function taskFour() {
-  //console.log(Number.isNaN(keyueOne));
-  multiplier(keyValOne, keyValTwo);
+function taskFour() { 
+  multiplier(valueOne, valueTwo);
 }
 
 /*
@@ -138,7 +136,7 @@ const eatable = [];
 const trash = [];
 
 function taskFive() {  
-  for (fruit of fruits) {
+  for (let fruit of fruits) {
     if (fruit == "apelsin" || fruit == "päron") {
       trash.push(fruit);      
     } else {
@@ -182,10 +180,10 @@ const underThirty = [];
 
 function taskSix() {
   for (let key in persons) {
-    persons[key].age > 30 ? 
-    (overThirty.push(persons[key].name)):(underThirty.push(persons[key].name)), 
-    persons[key].married == true ? 
-    (married.push(persons[key].name)):(notMarried.push(persons[key].name));
+    persons[key].age > 30 ? ( overThirty.push( persons[key].name)) :
+    ( underThirty.push( persons[key].name)), 
+    persons[key].married == true ? ( married.push( persons[key].name)) :
+    ( notMarried.push( persons[key].name));
   };
   document.getElementById('answer-six').innerHTML = 
     `<span><b>Över 30: </b> ${overThirty}</span>
@@ -253,8 +251,8 @@ function taskEight() {
   const card = document.getElementById('card-eight');
   card.style.transform = 'Scale(50%)';
   card.style.transitionDuration = '150ms';
-  setTimeout(() => {card.style.display = 'none'}, 140);  
-  setTimeout(() => {card.style.display = 'block', card.style.transform = 'Scale(100%)'}, 3140);   
+  setTimeout(() => { card.style.display = 'none'}, 140);  
+  setTimeout(() => { card.style.display = 'block', card.style.transform = 'Scale(100%)'}, 3140);   
 }
 
 /*
@@ -264,13 +262,12 @@ answer-container till blå, annars ska den ändras till röd
 */
 
 //DONE!
-function taskNine() {
-  
+function taskNine() {  
   let element = document.getElementsByClassName('answer-container');
   for (let card in element) {
-    new Date().getHours() <= 16 ? (element[card].style.backgroundColor = 'red') :
-    (element[card].style.backgroundColor = 'blue');
-    };
+    new Date().getHours() <= 16 ? ( element[card].style.backgroundColor = 'red') :
+    ( element[card].style.backgroundColor = 'blue');
+  };
 
   //const time = new Date().getHours();
   //let hours = time.getHours();
@@ -301,7 +298,7 @@ och att argument nummer tre antingen är satt till "add", "subtract", "multiply"
 om någon av dessa conditions inte uppfylls ska du visa en alertbox med texten "Något är fel"
 */
 
-function calculator(keyueOne, keyueTwo, operator) {
+function calculator(valueOne, valueTwo, operator) {
   alert("Replace this alert with a solution");
 }
 
