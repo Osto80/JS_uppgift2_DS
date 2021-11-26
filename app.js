@@ -24,7 +24,6 @@ addEventListener('mouseover', function targetCard(event) {
     }, 1500)
   }
 })
-
 //cardShadow[1].style.boxShadow = "2px 2px 5px grey";
 */
 
@@ -70,10 +69,8 @@ inte är helg ska du trigga en alert med meddelandet "FML"
 */
 //DONE!
 function taskThree() {
-  let time = new Date();
-  let whatDay = time.getDay();
-  console.log(whatDay);
-
+  let whatDay = new Date().getDay();  
+  //console.log(whatDay);
   if (whatDay == 0 || whatDay == 6) {
     alert("Woohooo it's weekend");
   } else {
@@ -89,12 +86,12 @@ undersöka om dessa värden är nummer, om så är fallet ska värdena multiplic
 ska sedan visas i en alert-box utefter följande: Produkten är: [RESULTATET], annars om ett av 
 eller båda värdena inte är ett nummer ska en alertbox med meddelandet "Jag kan bara multiplicera numer" triggas
 */
+//Undefined returnerar 'Produkten är: NAN'.
+//Null använder logiskt värdet 0;
+const valueOne = 2;
+const valueTwo = "3.5";
 
-const valueOne = "1.5";
-const valueTwo = 3.5;
-
-function multiplier(valueOne, valueTwo) {
-  
+function multiplier(valueOne, valueTwo) {  
   if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
     if (!Number.isNaN(valueOne) || !Number.isNaN(valueTwo)) {
       if (Number(valueOne) > 0 && Number(valueTwo) > 0 ) {
@@ -113,7 +110,7 @@ function multiplier(valueOne, valueTwo) {
 }
 
 function taskFour() {
-  console.log(Number.isNaN(valueOne));
+  //console.log(Number.isNaN(valueOne));
   multiplier(valueOne, valueTwo);
 }
 
@@ -146,8 +143,8 @@ function taskFive() {
     }
   }
   
-  //document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
   //Behåller knappen, men problemet är att den då fortsätter lägga till nya instancer av orden. Kanske kan bygga en guard mot det?
+  //document.getElementById('answer-five').insertAdjacentHTML('beforeend', "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash);
   document.getElementById('answer-five').innerHTML = "<b>Ätligt: </b>" + eatable + "<b>Skräp: </b>" + trash;
 }
 
@@ -193,12 +190,7 @@ function taskSix() {
     } else {
       notMarried.push(persons[i].name)
     } 
-  };
-  console.log(overThirty);
-  console.log(underThirty);
-  console.log(married);
-  console.log(notMarried);
-  //TODO: Sortering klar, ska fixa rendering på sida.
+  };  
   document.getElementById('answer-six').innerHTML = "<b>Över 30: </b>" + overThirty + "<b>Under 30: </b>" + underThirty + "<b>Gift </b>" + married + "<b>Ogift: </b>" + notMarried;  
 }
 
@@ -207,22 +199,33 @@ Uppgift 7:
 Dela upp strängen addMeSomeLineBreaks vid varje komma och skriv 
 ut texten på en ny rad i diven "answer-seven"
 */
-//DONE!
+//DONE! Updated with lesson style
 const addMeSomeLineBreaks =
   "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?";
 
 function taskSeven() {
-  document.getElementById('answer-seven').innerHTML = '';
-  const linesAdded = addMeSomeLineBreaks.split(",");
-  console.log(linesAdded);
-  for (let i = 0; i < linesAdded.length; i++) {
-  //Printar ut det tydligt att de är splittade vid komma-tecknen.
-  //document.getElementById('answer-seven').innerHTML = linesAdded; hade funkat för att printa ut den i diven.
-  document.getElementById('answer-seven').insertAdjacentHTML('beforeend', linesAdded[i] + '<br><br>');
-  document.getElementById('answer-seven').style.fontSize = "75%";
-  
+  let linesAdded = '';
+  for (let line of addMeSomeLineBreaks) {
+    switch (line) {
+      case ',': linesAdded += ', <br>';
+      break;
+    default:
+      linesAdded += line;
+    }
   }
-  
+  document.getElementById('answer-seven').innerHTML = linesAdded;
+  document.getElementById('answer-seven').style.fontSize = "65%";
+  /*
+  //FIRST Version.
+  //Rensar bort knappen från elementet
+  document.getElementById('answer-seven').innerHTML = '';
+  const linesAdded = addMeSomeLineBreaks.split(",");  
+  for (let i = 0; i < linesAdded.length; i++) {
+  //Printar ut det tydligt att de är splittade vid komma-tecknen.  
+  document.getElementById('answer-seven').insertAdjacentHTML('beforeend', linesAdded[i] + '<br><br>');
+  document.getElementById('answer-seven').style.fontSize = "75%";  
+  }
+  */
 }
 
 /*
@@ -245,11 +248,9 @@ answer-container till blå, annars ska den ändras till röd
 //DONE!
 function taskNine() {
   let element = document.getElementsByClassName('answer-container');  
-
-  let time = new Date();
-  let hours = time.getHours();   
-  
-  if (hours <= 16) {        
+  //const time = new Date().getHours();
+  //let hours = time.getHours();  
+  if (new Date().getHours() <= 16) {        
     for (i = 0; i < element.length; i++) {
       element[i].style.backgroundColor = 'red';
     }
