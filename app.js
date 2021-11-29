@@ -272,10 +272,11 @@ answer-container till blå, annars ska den ändras till röd
 
 //DONE!
 function taskNine() {  
-  let element = document.getElementsByClassName('answer-container');
-  for (let card in element) {
-    new Date().getHours() <= 16 ? ( element[card].style.backgroundColor = 'red') :
-    ( element[card].style.backgroundColor = 'blue');
+  let elements = document.getElementsByClassName('answer-container');
+  console.log(elements);
+  for (let panel in elements) {
+    new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
+     elements[panel].style.backgroundColor = 'blue';
   };
 
   //const time = new Date().getHours();
@@ -319,7 +320,7 @@ function calculator(valueOne, valueTwo, operator) {
       performMath(valueOne, valueTwo, operator);
     } else { 
       error = true;     
-      console.log(error)
+      console.log('Strängen innehåller annat än siffror: ' + error)
     }
   } else {    
     performMath(valueOne, valueTwo, operator);    
@@ -337,7 +338,7 @@ function calculator(valueOne, valueTwo, operator) {
       break;
     case 'divide': result = Number(valueOne) / Number(valueTwo);
       break;
-    default: alert('Något blev fel (OPERATOR!)')
+    default: console.log('operator hittas ej')
     }
     return result;
   }
@@ -356,6 +357,6 @@ function taskTen() {
   let operatorString = 'suBtract';
   //första och andra argumentet ska vara nummer, tredje argumentet ska
   //vara en sträng med något av värdena "add", "subtract", "multiply", "divide"
-  calculator('36', 4, operatorString);
+  calculator('12', 4, operatorString);
 }
 
