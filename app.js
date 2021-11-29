@@ -27,6 +27,8 @@ addEventListener('mouseover', function targetCard(event) {
 //cardShadow[1].style.boxShadow = "2px 2px 5px grey";
 */
 
+// --- HÄR BÖRJAR UPPGIFTEN! ---- 
+
 /*
 Uppgift 1: 
 Använd variabeln blue för att "toggla" bakrgrundsfärgen mellan blå och vit
@@ -61,9 +63,8 @@ läggas till i numbers-arrayen, innan arrayen renderas ut i diven med id answer-
 //DONE!
 const numbers = [234, 986, 784];
 
-function taskTwo() {  
-  randomNumber = Math.floor(Math.random() * 1000);
-  numbers.push(randomNumber);   
+function taskTwo() {
+  numbers.push(Math.floor(Math.random() * 1000));   
   document.getElementById('answer-two').innerHTML = numbers.join('<br>');
   document.getElementById('answer-two').style.fontFamily = "arial";
 }
@@ -83,7 +84,6 @@ function taskThree() {
     alert('FML');
   }
 };
-// Kanske kan skriva om med new date().getDay() jämförelse direkt. ska kolla detta.
 
 /*
 Uppgift 4: 
@@ -92,12 +92,20 @@ undersöka om dessa värden är nummer, om så är fallet ska värdena multiplic
 ska sedan visas i en alert-box utefter följande: Produkten är: [RESULTATET], annars om ett av 
 eller båda värdena inte är ett nummer ska en alertbox med meddelandet "Jag kan bara multiplicera numer" triggas
 */
-//Undefined returnerar 'Produkten är: NAN'.
-//Null använder logiskt värdet 0;
+//Undefined returns 'Produkten är: NAN'.
+//Null returns 0;
 const valueOne = 2;
 const valueTwo = "3.5";
 
-function multiplier(valueOne, valueTwo) {  
+function multiplier(valueOne, valueTwo) { 
+  
+  if (!isNaN(valueOne) && !isNaN(valueTwo)) {
+    const result = Number(valueOne) * Number(valueTwo);
+    alert('Produkten är: ' + result);
+  } else {
+    alert('Jag kan bara multiplicera nummer')
+  }
+  /*
   if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
     if (!Number.isNaN(valueOne) || !Number.isNaN(valueTwo)) {
       if (Number(valueOne) > 0 && Number(valueTwo) > 0 ) {
@@ -113,6 +121,7 @@ function multiplier(valueOne, valueTwo) {
     const result = Number(valueOne) * Number(valueTwo);
     alert('Produkten är: ' + result);
   };
+  */
 }
 
 function taskFour() { 
@@ -298,12 +307,55 @@ och att argument nummer tre antingen är satt till "add", "subtract", "multiply"
 om någon av dessa conditions inte uppfylls ska du visa en alertbox med texten "Något är fel"
 */
 
+
+
 function calculator(valueOne, valueTwo, operator) {
-  alert("Replace this alert with a solution");
+  
+  let error = false;
+  let result = '';  
+  //Checks if its a string, and if that string contains a numbers only, if not error msg alerts.
+  if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
+    if (!isNaN(valueOne) && !isNaN(valueTwo)) {
+      performMath(valueOne, valueTwo, operator);
+    } else { 
+      error = true;     
+      console.log(error)
+    }
+  } else {    
+    performMath(valueOne, valueTwo, operator);    
+  }  
+
+  function performMath(valueOne, valueTwo, operator) {    
+    //convert to lowercase for switch
+    const mathOperator = operator.toLowerCase();    
+  switch (mathOperator) {    
+    case 'add': result = Number(valueOne) + Number(valueTwo);
+      break;
+    case 'subtract': result = Number(valueOne) - Number(valueTwo);
+      break;
+    case 'multiply': result = Number(valueOne) * Number(valueTwo);
+      break;
+    case 'divide': result = Number(valueOne) / Number(valueTwo);
+      break;
+    default: alert('Något blev fel (OPERATOR!)')
+    }
+    return result;
+  }
+  function roundNum (number) {
+    //Rounds number to decrease decimalcount on certain results. example 0,21245 * 100 = 21,245 rounded = 21 /100 = 0,21
+    //Epsilon helps us with the floating point variation.
+    let roundedResult = Math.round((number + Number.EPSILON) * 100) / 100;
+    return roundedResult;
+  }
+  console.log(result)
+  error == true ? (alert('Något är fel')) : ( alert('Resultat (avrundat till två decimaler): ' + roundNum(result)));
 }
 
 function taskTen() {
+  // Change value to 'add', 'subtract', 'multiply' or 'divide'
+  let operatorString = 'suBtract';
   //första och andra argumentet ska vara nummer, tredje argumentet ska
   //vara en sträng med något av värdena "add", "subtract", "multiply", "divide"
-  calculator();
+  calculator('36', 4, operatorString);
 }
+
