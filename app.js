@@ -258,10 +258,10 @@ efter att tre sekunder har gått ska diven visas som vanligt igen
 //Done! 
 function taskEight() {
   const card = document.getElementById('card-eight');
-  card.style.transform = 'Scale(20%)';
   card.style.transitionDuration = '150ms';
-  setTimeout(() => { card.style.display = 'none'}, 140);  
-  setTimeout(() => { card.style.display = 'block', card.style.transform = 'Scale(100%)'}, 3140);   
+  card.style.transform = 'Scale(0%)';  
+  card.style.visibility = 'hidden';    
+  setTimeout(() => { card.style.visibility = 'visible', card.style.transform = 'Scale(100%)'}, 3000);   
 }
 
 /*
