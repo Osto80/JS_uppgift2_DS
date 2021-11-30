@@ -274,7 +274,7 @@ answer-container till blå, annars ska den ändras till röd
 function taskNine() {   
   let elements = document.getElementsByClassName('answer-container');
   console.log(elements);
-  for (let panel of elements) {
+  for (let panel in elements) {
     console.log(elements[panel]);
         new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
         elements[panel].style.backgroundColor = 'blue';
