@@ -189,7 +189,7 @@ const underThirty = [];
 
 function taskSix() {
   for (let key in persons) {
-    persons[key].age > 30 ? ( overThirty.push( persons[key].name)) :
+    persons[key].age >= 30 ? ( overThirty.push( persons[key].name)) :
     ( underThirty.push( persons[key].name)), 
     persons[key].married == true ? ( married.push( persons[key].name)) :
     ( notMarried.push( persons[key].name));
@@ -258,7 +258,7 @@ efter att tre sekunder har gått ska diven visas som vanligt igen
 //Done! 
 function taskEight() {
   const card = document.getElementById('card-eight');
-  card.style.transform = 'Scale(50%)';
+  card.style.transform = 'Scale(20%)';
   card.style.transitionDuration = '150ms';
   setTimeout(() => { card.style.display = 'none'}, 140);  
   setTimeout(() => { card.style.display = 'block', card.style.transform = 'Scale(100%)'}, 3140);   
@@ -271,38 +271,26 @@ answer-container till blå, annars ska den ändras till röd
 */
 
 //DONE!
-function taskNine() {   
+function taskNine() {
+  /*
+  // gives consoleerror about undefined, but JS handles it and sets the color accordingly.    
   let elements = document.getElementsByClassName('answer-container');
   console.log(elements);
   for (let panel in elements) {
     console.log(elements[panel]);
         new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
         elements[panel].style.backgroundColor = 'blue';
-  };
-
-  /*
-  for (let panel in elements) {
-    console.log(elements[panel]);
-        new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
-     elements[panel].style.backgroundColor = 'blue';
-  };
-
-  */
-
-  //const time = new Date().getHours();
-  //let hours = time.getHours();
-  /*  
-  if (new Date().getHours() <= 16) {        
-    for (i = 0; i < element.length; i++) {
-      element[i].style.backgroundColor = 'red';
+  };  
+*/  
+  //Working version without console error msg.
+  let elements = document.getElementsByClassName('answer-container'); 
+  for (let i = 0; i < elements.length; i++) {
+    if (new Date().getHours() <= 16) {
+      elements[i].style.backgroundColor = 'red';
+    } else {
+      elements[i].style.backgroundColor = 'blue';
     }
-  } else {
-    for (i = 0; i < element.length; i++) {
-      element[i].style.backgroundColor = 'blue';
-    }
-  }
-  */
-  
+  }  
 }
 
 /*
