@@ -271,13 +271,23 @@ answer-container till blå, annars ska den ändras till röd
 */
 
 //DONE!
-function taskNine() {  
+function taskNine() {   
   let elements = document.getElementsByClassName('answer-container');
   console.log(elements);
+  for (let panel of elements) {
+    console.log(elements[panel]);
+        new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
+        elements[panel].style.backgroundColor = 'blue';
+  };
+
+  /*
   for (let panel in elements) {
-    new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
+    console.log(elements[panel]);
+        new Date().getHours() <= 16 ? elements[panel].style.backgroundColor = 'red' :
      elements[panel].style.backgroundColor = 'blue';
   };
+
+  */
 
   //const time = new Date().getHours();
   //let hours = time.getHours();
