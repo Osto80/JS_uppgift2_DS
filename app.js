@@ -313,16 +313,18 @@ function calculator(valueOne, valueTwo, operator) {
   let error = false;
   let result = '';  
   //Checks if its a string, and if that string contains a numbers only, if not error msg alerts.
-  if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
-    if (!isNaN(valueOne) && !isNaN(valueTwo)) {
-      performMath(valueOne, valueTwo, operator);
-    } else { 
-      error = true;     
-      console.log('Strängen innehåller annat än siffror: ' + error)
-    }
-  } else {    
-    performMath(valueOne, valueTwo, operator);    
-  }  
+  // -- removed unnecessary lines!
+  //if (typeof valueOne == 'string' || typeof valueTwo == 'string') {    
+  if (!isNaN(valueOne) && !isNaN(valueTwo)) {
+    performMath(valueOne, valueTwo, operator);
+  } else { 
+    error = true;     
+    console.log('Strängen innehåller annat än siffror: ' + error)
+  }
+  // -- removed unnecessary lines!
+  //} else {    
+  //  performMath(valueOne, valueTwo, operator);    
+  //}  
 
   function performMath(valueOne, valueTwo, operator) {    
     //convert to lowercase for switch
