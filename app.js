@@ -336,7 +336,10 @@ function calculator(valueOne, valueTwo, operator) {
       break;
     case 'divide': result = Number(valueOne) / Number(valueTwo);
       break;
-    default: console.log('operator hittas ej')
+    default: {
+      console.log('operator hittas ej');
+      error = true;
+    }
     }
     return result;
   }
